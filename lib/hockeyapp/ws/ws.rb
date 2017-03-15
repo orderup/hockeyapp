@@ -86,7 +86,7 @@ module HockeyApp
         :notes_type => version.notes_type,
         :notify => version.notify,
         :status => version.status,
-        :tags => tags,
+        :tags => version.tags,
         :mandatory => version.mandatory
       }
       params.reject!{|_,v|v.nil?}
