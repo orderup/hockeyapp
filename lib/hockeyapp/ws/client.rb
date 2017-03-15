@@ -48,6 +48,11 @@ module HockeyApp
       versions_hash["app_versions"].map{|version_hash|Version.from_hash(version_hash, app, self)}
     end
 
+    def put_version version
+      app_id = version.app.public_identifier
+      ws.put_version(app_id, version)
+    end
+
     def post_new_version version
       app_id = version.app.public_identifier
       ipa = version.ipa

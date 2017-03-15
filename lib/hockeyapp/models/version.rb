@@ -71,6 +71,10 @@ module HockeyApp
       url_strategy.install_url
     end
 
+    def update
+      client.put_version self
+    end
+
     private
 
     attr_reader :client

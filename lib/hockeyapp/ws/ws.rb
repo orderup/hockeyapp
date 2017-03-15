@@ -80,6 +80,19 @@ module HockeyApp
       self.class.post "/apps/#{app_id}/app_versions/upload", :body => params
     end
 
+    def put_version(app_id, version)
+      params = {
+        :notes => version.notes,
+        :notes_type => version.notes_type,
+        :notify => version.notify,
+        :status => version.status,
+        :tags => tags,
+        :mandatory => version.mandatory
+      }
+      params.reject!{|_,v|v.nil?}
+      self.class.put "/apps/#{app_id}/app_versions/#{version.id}", :body => params
+    end
+
 
     def remove_app app_id
       self.class.format :plain
